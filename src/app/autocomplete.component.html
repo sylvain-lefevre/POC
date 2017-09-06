@@ -1,0 +1,65 @@
+<h3>Chargement adresse</h3>
+<p>Remote adresse from <a href="https://adresse.data.gouv.fr/api">adresse.data.gouv.fr/api</a>
+
+<div class="card">
+	<div class="card-block">
+		<div class="form-group row">
+			<div class="col-5">
+				Depart :
+				<ng2-completer [(ngModel)]="adresse"
+											(selected)="onSelectedDepart($event)"
+											 [datasource]="dataService"
+											 [minSearchLength]="3"
+											 [placeholder]="'Search adresse'"
+											 [textSearching]="'Please wait...'"
+											 [inputClass]="'form-control'">
+				</ng2-completer>
+			</div>
+			<div class="col-6">
+				<p class="form-control-static"><b>{{adresse}}</b> x:{{departX}} y:{{departY}}</p>
+			</div>
+			<div class="col-5">
+				Arrivee : 
+				<ng2-completer [(ngModel)]="adresse2"
+											(selected)="onSelectedArrivee($event)"
+											 [datasource]="dataService2"
+											 [minSearchLength]="3"
+											 [placeholder]="'Search adresse'"
+											 [textSearching]="'Please wait...'"
+											 [inputClass]="'form-control'">
+				</ng2-completer>
+			</div>
+			<div class="col-6">
+				<p class="form-control-static"><b>{{adresse2}}</b> x:{{arriveeX}} y:{{arriveeY}}</p>
+			</div>
+			<div class="col-5">
+				Ajouter etapes : 
+				<ng2-completer [(ngModel)]="adresse3"
+											(selected)="onSelectedEtape($event)"
+											 [datasource]="dataService3"
+											 [minSearchLength]="3"
+											 [placeholder]="'Search adresse'"
+											 [textSearching]="'Please wait...'"
+											 [inputClass]="'form-control'">
+				</ng2-completer>
+			</div>
+			<div *ngIf="selectedRoute">
+				<ul>
+					<li *ngFor="let etape of etapes; let i = index" > 
+						{{etape}}
+						<div *ngIf="selectedRoute.legs[i]">
+							<p>distance etape {{i+1}} = {{selectedRoute.legs[i].distance / 1000}} km</p>
+							<p>duree etape {{i+1}} = {{selectedRoute.legs[i].duration / 60}} minutes</p>
+						</div>
+						<div *ngIf="i>0 && i<etapes.length-1">
+							<button class="delete" (click)="onSupress(i); $event.stopPropagation()">Supprimer</button>
+						</div>
+					</li>
+				</ul>
+				<p>distance totale = {{selectedRoute.distance / 1000}} km</p>
+				<p>duree totale = {{selectedRoute.duration / 60}} minutes</p>
+			</div>
+		</div>
+	</div>
+</div>
+

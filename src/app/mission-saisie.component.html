@@ -1,0 +1,40 @@
+<h3>Saisie de mission</h3>
+<div class="card">
+	<div class="card-block">
+		<div class=' form-group row'>
+			<div class='col col-lg-4 col-md-12 col-sm-12 col-12'>
+				<div><label>Date du frais</label></div>
+				<ngb-datepicker #dp [(ngModel)]="date"
+					(navigate)="date = $event.next"></ngb-datepicker>
+			</div>
+			<div class='col col-lg-8 col-md-12 col-sm-12 col-12'>
+				<div class='form-group row'>
+					<div class='col col-lg-12 col-md-12 col-sm-12 col-12'>
+						<label>Type de frais</label>
+						<select class='form-control' [(ngModel)]="selectedItem">
+							<option *ngFor="let item of liste" [ngValue]="item">{{item}}</option>
+						</select>
+					</div>
+					<div class='col col-lg-6 col-md-12 col-sm-12 col-12'>
+						<label>Nombre ou montant</label>
+						<input class='form-control' placeholder="Saisissez" />
+					</div>
+					<div class='col col-lg-6 col-md-12 col-sm-12 col-12'>
+						<label>Resultat</label>
+						<input class='form-control' class='form-control'
+							placeholder="Saisissez" />
+					</div>
+					<div class='col col-lg-6 col-md-12 col-sm-12 col-12'>
+						<div><label>Piece(s) justificative(s)</label></div>
+						<input type="file" />
+					</div>
+					<div class='col col-lg-6 col-md-12 col-sm-12 col-12'>
+						<label>Commentaire</label>
+						<textarea class='form-control' placeholder="Saisissez" ></textarea>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+

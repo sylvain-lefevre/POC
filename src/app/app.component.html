@@ -1,0 +1,13 @@
+<h1>{{title}}</h1>
+<nav class="navbar navbar-toggleable-md navbar-light bg-faded navbar-static-top" role="navigation">
+	<div class='container'>
+		<a class="navbar-brand" routerLink="/dashboard" routerLinkActive="active">Dashboard</a> 
+		<a class="nav-link" routerLink="/heroes" routerLinkActive="active">Heroes</a>
+		<a class="nav-link" routerLink="/login" routerLinkActive="active">Login</a>
+		<a class="nav-link" routerLink="/adresse" routerLinkActive="active">Adresse</a>
+		<a class="nav-link" routerLink="/mission" routerLinkActive="active">Mission</a>
+	</div>
+</nav>
+<div class='container'>
+<router-outlet></router-outlet>
+</div>
